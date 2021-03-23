@@ -1,0 +1,45 @@
+<script>
+
+    // #1
+
+    let tC = +prompt('Enter temperature in degrees Celsius: ');
+
+    if ( !isNaN(tC) ) {
+        let tF = (9 / 5) * tC + 32;
+        alert(`Temperature ${tC}Cº in degrees Fahrenheit is ${tF}`);
+    } else {
+        alert('Not a number!');
+    }
+
+
+    // #2
+
+    let admin;
+    let name = 'Василий';
+    admin = name;
+    console.log(admin);
+
+
+    // #3
+
+    // Ответ: "1000108". В JavaScript в выражениях с бинарным плюсом, где хотя бы один операнд является строкой, результатом будет объединением строк операндов (number преобразуется в string).
+
+
+    // #4
+
+    // при defer и async скрипт загружается в фоновом режиме и не мешает прогрузке html-документа,
+    // после загрузки скрипты c атрибутом defer запускаются согласно порядку их добавления в код
+    // после загрузки из скриптов c атрибутом async запускаются первые загруженные скрипты(малые по объему)
+
+
+    // #доп
+
+    let a = 10;
+    let b = 20;
+
+    b = b * a; // 200
+    a = b / a; // 200 : 10 = 20
+    b = b / a; // 200 : 20 = 10
+    console.log(a, b); // 20, 10
+
+</script>
