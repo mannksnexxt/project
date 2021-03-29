@@ -1,0 +1,74 @@
+<script>
+
+// #1
+let getPrimeNumbers = function(array) {
+    let primeNumbers = [];
+    for (let number of array) {
+        let divisionCounter = 0;
+
+        for (let i = 1; i <= number; i++) {
+            if (number % i == 0)
+                divisionCounter++;
+        }
+
+        if (divisionCounter == 2) primeNumbers.push(number);
+    }
+    return primeNumbers;
+}
+
+
+let arr = [];
+for (let i = 1; i <= 100; i++) {
+    arr.push(i);
+}
+
+console.log( getPrimeNumbers(arr) );
+
+
+// #2
+let basket = [
+    {
+        name: 'Rose',
+        price: 200
+    },
+    {
+        name: 'Tulip',
+        price: 100
+    },
+    {
+        name: 'Gladioli',
+        price: 120
+    }
+];
+
+function countBasketPrice(basket) {
+    let summaryPrice = 0;
+
+    for (product of basket) {
+        summaryPrice += product.price;
+    }
+
+    return summaryPrice;
+}
+
+console.log( countBasketPrice(basket) ); //420
+
+
+// #3
+for ( let i = 0; i <= 9; console.log(i++) ) {}
+
+
+// #4
+function makePrint(count) {
+    let print = '';
+    for (let symbol = 1; symbol <= count; symbol++) {
+        print += 'x';
+    }
+    return print;
+}
+
+for (let i = 1; i <= 20; i++) {
+    console.log( makePrint(i) );
+}
+
+</script>
