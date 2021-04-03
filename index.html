@@ -1,0 +1,250 @@
+<head>
+    <script src="database.js" charset="utf-8"></script>
+</head>
+
+
+<script>
+
+// #1
+let numberConverter = function(number) {
+    if (number > 999) {
+        console.log('Large number entered!');
+        return {};
+    }
+    let hundreds = Math.floor(number / 100);
+    let dozens = Math.floor( (number - (hundreds * 100)) / 10 );
+    let units = number - (hundreds * 100 + dozens * 10);
+    let obj = {
+        hundreds: hundreds,
+        dozens: dozens,
+        units: units
+    };
+    return obj;
+}
+
+console.log( numberConverter(855) );
+
+
+// #2
+
+
+let event = false;
+let answers = [];
+
+
+while (!event) {
+    event = takeValues(quests[0], isAnswer);
+    if (event == -1) break;
+    answers.push( makeHistoryObject(quests[0], event) );
+}
+
+switch (event) {
+    case 1: // Первое действие  - если в первом окне ввели 1 то открываем серию окон - окно 2
+        do {
+            event = takeValues(quests[1], isAnswer);
+            if (event == -1) break;
+            answers.push( makeHistoryObject(quests[1], event) );
+        } while (!event);
+
+        switch (event) {
+            case 1: // Второе действие, если во 2 окне ввели 1 то переходим на 4 окно
+                do {
+                    event = takeValues(quests[3], isAnswer);
+                    if (event == -1) break;
+                    answers.push( makeHistoryObject(quests[3], event) );
+                } while (!event);
+
+                break;
+            case 2: // Второе действие   Если ввели 2 то также переходим на 4 окно
+                do {
+                    event = takeValues(quests[3], isAnswer);
+                    if (event == -1) break;
+                    answers.push( makeHistoryObject(quests[3], event) );
+                } while (!event);
+
+                break;
+            case -1:
+                break;
+            default:
+                alert('Ошибка');
+        }
+        break;
+
+    case 2: // Первое действие    Если в 1 окне ввели 2 то переходим к 3 окну
+        do {
+            event = takeValues(quests[2], isAnswer);
+            if (event == -1) break;
+            answers.push( makeHistoryObject(quests[3], event) );
+        } while (!event);
+
+        switch (event) {
+            case 1: // Второе действие
+                do {
+                    event = takeValues(quests[3], isAnswer);
+                    if (event == -1) break;
+                    answers.push( makeHistoryObject(quests[3], event) );
+                } while (!event);
+
+                break;
+            case 2: // Второе действие
+                do {
+                    event = takeValues(quests[3], isAnswer);
+                    if (event == -1) break;
+                    answers.push( makeHistoryObject(quests[3], event) );
+                } while (!event);
+
+                break;
+            case -1: // Второе действие
+                break;
+            default:
+                alert('Ошибка');
+        }
+        break;
+    case -1: // Первое действие
+        break;
+    default:
+        alert('Ошибка');
+}
+alert('Спасибо за игру');
+if (answers.length != 0) {
+    alert( getHistoryItem(answers) );
+}
+
+
+//------------------------------------------
+
+function isAnswer(q, event) {
+    if (isNaN(event) || !isFinite(event)) {
+        alert('Вы ввели недопустимый символ');
+        return false;
+    }
+    else if (event < 1 || event > q) {
+        alert('Ваше число выходит из допустимого диапозона');
+        return false;
+    }
+	return true;
+
+}
+
+function takeValues(quest, verifer) { //запрашивает валидный ответ от пользователя
+    let checkEvent = false, event;
+    while (!checkEvent) {
+        event = +prompt(quest.question + quest.firstAction + quest.secondAction + '-1 - Выход из игры');
+        if (event == -1) return -1;
+        checkEvent = verifer(quest.possibleActions, event);
+    }
+    return event;
+}
+
+function makeHistoryObject(quest, ev) { //создает лог для добавления в массив ответов
+    let userAnswer = ev == 1 ? quest.firstAction : quest.secondAction;
+    return {
+        question: quest.question,
+        answer: userAnswer
+    }
+}
+
+function getHistoryItem(history) { // возвращает выбранный пользователем лог
+    let objectIndex = +prompt(`Введите номер вопроса (от 1 до ${history.length})`) - 1;
+    if (objectIndex < 0 || objectIndex >= history.length) {
+        alert('Такого вопроса не было!');
+        getHistoryObject(history);
+    }
+    let historyItem = `Вопрос: ${history[objectIndex].question}
+    \n Ответ: ${history[objectIndex].answer}`
+    return historyItem;
+}
+
+
+// #3
+
+// questions в файле database.js
+let play = true;
+let cost = 10;
+
+
+while (play) {
+    play = playGame(questions);
+}
+
+
+
+
+// ----------------------------------------------------
+
+function playGame(questions) { // основной алгоритм игры
+    for (let question of questions) {
+        let answer;
+        while (true) {
+            answer = prompt( makeQuestion(question) );
+            if ( validateAnswer(answer) ) break;
+        }
+        if (answer == 'q') {
+            win('Вы решили забрать выигрыш!');
+            return false;
+        }
+
+        if ( checkAnswer(question.trueVariant, answer) ) {
+            cost *= 5;
+            alert(`Верно, сумма вашего выигрыша теперь ${cost}$`);
+        } else {
+            lose(question);
+            return false;
+        }
+    }
+
+    win('Вы дошли до конца!')
+    return false;
+}
+
+
+
+    function makeQuestion(dataItem) { // конструктор вопросов
+        let question = `Внимание, вопрос: \n`;
+        question += `${dataItem.question} \n`;
+        for (let variant of dataItem.variants) {
+            question += `${variant.symbol}) ${variant.value} \n`;
+        }
+
+        question += `Нажмите 'q' чтобы забрать выигрыш ${cost}$!`
+        return question;
+    }
+
+function validateAnswer(answer) { // проверка на корректность ответа
+    if ( 'abcdq'.includes(answer) ) {
+        return true;
+    }
+    alert('Некорректный ответ!');
+    return false;
+}
+
+function checkAnswer(trueAnswer, userAnswer) { // проверка на правильность ответа
+    if (trueAnswer == userAnswer) {
+        return true;
+    }
+    return false;
+}
+
+
+function win(message) { //в случае победы
+    let notification = 'Поздравляем!\n' + message;
+    notification += `\nВаш приз ${cost}$!`;
+    alert(notification);
+}
+
+function lose(question) { // в случае проигрыша(показывает правильный ответ)
+    let answer;
+    for (let item of question.variants) {
+        if (item.symbol == question.trueVariant) {
+            answer = item;
+            break;
+        }
+    }
+
+    let notification = 'Вы проиграли! Приз сгорел!\n';
+    notification += `Правильный ответ: ${answer.symbol}) ${answer.value}`;
+    alert(notification);
+}
+
+
+</script>
