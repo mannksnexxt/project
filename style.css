@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+body {width: 100%;}
+
+.chess-desk {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto ;
+    color: #050805; /* текст и фигуры */
+}
+.row {display: flex;}
+.reverse {transform: rotate(180deg);}
+
+.col {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+.white {
+    background-color: #f9f9f9;
+    background: linear-gradient(312deg, rgba(246,81,48,1) 0%, rgba(233,148,26,1) 100%);
+} /* белые */
+
+
+.black {
+    background-color: #1d1d1d;
+
+} /* черные */
+.col.white, .col.black {
+    font-size: 50px;
+};
