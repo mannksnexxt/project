@@ -1,0 +1,138 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #1A1D41;
+    transition: .1s;
+}
+button:hover {
+    transition: .1s;
+    background-color: #fff;
+    color: #2C305D;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+.products {
+    background: #D5D5D5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 2;
+    padding: 0 30px;
+    flex-wrap: wrap;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+}
+
+img {width: 260px;}
+.card-bottom {
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+.title p {font-weight: 300;}
+.title span {font-weight: 400;}
+
+button {
+    padding: 20px 0;
+    font-size: 16px;
+    border: none;
+    color: #D5D5D5;
+    background: #2C305D;
+    letter-spacing: 1px;
+}
+
+.cart {
+    background: #2C305D;
+    box-shadow: -19px 4px 27px rgba(0, 0, 0, 0.12);
+    min-width: 460px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 0 100px;
+    align-items: center;
+}
+.items {
+    max-height: 360px;
+    overflow-y: scroll;
+    overflow-x: visible;
+}
+.item {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    min-width: 400px;
+}
+.item>span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 22px;
+    padding-left: 20px;
+    color: #b2b2b2;
+    font-weight: 100;
+    flex-grow: 1;
+}
+
+.item img {width: 100px}
+.item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+.item-info p {
+    color: #e7e7e7;
+    font-size: 18px;
+    font-weight: 100;
+}
+.item-info span {
+    color: #e7e7e7;
+    font-size: 20px;
+    font-weight: 100;
+}
+.remove {
+    font-size: 20px;
+    padding: 15px 5px;
+    margin-right: 20px;
+    /* transform: translateX(-20px); */
+    border-radius: 2px;
+    background: #20234a;
+    height: 16px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.total-price {
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.total-price p {
+    font-size: 36px;
+    color: #e7e7e7;
+}
+.total-price span {
+    font-size: 48px;
+    color: #e7e7e7;
+    font-weight: 400;
+}
