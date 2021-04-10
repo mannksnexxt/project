@@ -1,52 +1,20 @@
-let blackFigures = [
+let shopItems = [
     {
-        figure: 'a',
-        code: '&#9820;'
+        id: 0,
+        img: 'img/item1.png',
+        name: 'The Alan Parsons Project',
+        cost: 15
     },
     {
-        figure: 'b',
-        code: '&#9821;'
+        id: 1,
+        img: 'img/item2.png',
+        name: 'Todd Rundgren',
+        cost: 12
     },
     {
-        figure: 'c',
-        code: '&#9822;'
+        id: 2,
+        img: 'img/item3.png',
+        name: 'Martha Argerich',
+        cost: 20
     },
-    {
-        figure: 'd',
-        code: '&#9819;'
-    },
-    {
-        figure: 'e',
-        code: '&#9818;'
-    },
-    {
-        figure: 'f',
-        code: '&#9823;'
-    }
-];
-let whiteFigures = [
-    {
-        figure: 'a',
-        code: '&#9814;'
-    },
-    {
-        figure: 'b',
-        code: '&#9815;'
-    },
-    {
-        figure: 'c',
-        code: '&#9816;'
-    },
-    {
-        figure: 'd',
-        code: '&#9813;'
-    },
-    {
-        figure: 'e',
-        code: '&#9812;'
-    },
-    {
-        figure: 'f',
-        code: '&#9817;'
-    }
-];
+]
