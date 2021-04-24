@@ -4,26 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <script src="database.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <div class="products"></div>
-
-        <div class="cart">
-            <div class="items">
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__left">
+                <a href="#" class="header__logo">
+                    <img src="img/logo.png" alt="logo" width="44" height="38">
+                </a>
+                <img src="img/search.svg">
             </div>
-
-            <div class="total-price">
-                <p>Итого</p>
-                <span class="summary">0$</span>
+            <div class="header__right">
+                <nav class="header__nav">
+                    <a href="#">
+                        <img src="img/menu.svg">
+                    </a>
+                    <a href="#">
+                        <img src="img/user.svg">
+                    </a>
+                    <a href="#">
+                        <img src="img/cart.svg">
+                    </a>
+                </nav>
             </div>
         </div>
-    </div>
+    </header>
 
+    <main>
+        <div class="promo">
+            <div class="container promo__container">
+                <div class="promo__text">
+                    <h1>THE BRAND</h1>
+                        <span>OF LUXERIOUS
+                            <span class="promo__decor">FASHION</span>
+                        </span>
 
-    <script src="script.js" charset="utf-8"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="container product__container">
+                <div class="product__card">
+                    <div class="product__card-wrap">
+                        <span>30% OFF</span>
+                        <h2>FOR WOMEN</h2>
+                    </div>
+                </div>
+                <div class="product__card">
+                    <div class="product__card-wrap">
+                        <span>HOT DEAL</span>
+                        <h2>FOR MEN</h2>
+                    </div>
+                </div>
+                <div class="product__card">
+                    <div class="product__card-wrap">
+                        <span>NEW ARRIVALS</span>
+                        <h2>FOR KIDS</h2>
+                    </div>
+                </div>
+                <div class="product__card">
+                    <div class="product__card-wrap">
+                        <span>LUXIROUS & TRENDY</span>
+                        <h2>ACCESORIES</h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
 </body>
 </html>
